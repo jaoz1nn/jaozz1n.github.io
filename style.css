@@ -20,6 +20,18 @@ body {
   animation: fadeIn 0.8s ease;
 }
 
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
 h1, h2 {
   font-weight: 500;
 }
@@ -83,15 +95,6 @@ h1, h2 {
   transform: scale(1.05);
 }
 
-.hidden {
-  display: none;
-}
-
-.active {
-  display: block;
-}
-
-/* animações */
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
