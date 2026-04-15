@@ -1,35 +1,30 @@
-let card = document.getElementById("card");
+let noBtn = document.getElementById("no");
 
-// Exibir a mensagem caso seja selecionado o 'sim'
-document.querySelector("#yes").addEventListener("click", function () {
-  let question = document.getElementById("question");
-  let message = document.getElementById("answer");
+let q1 = document.getElementById("q1");
+let q2 = document.getElementById("q2");
+let final = document.getElementById("final");
 
-  card.style.backgroundImage =
-    "url('https://img1.picmix.com/output/stamp/normal/5/1/0/1/1171015_f458c.gif')";
-  question.style.display = "none";
-  message.style.display = "flex";
+let audio = document.getElementById("bg-music");
+
+// SIM
+document.getElementById("yes").addEventListener("click", () => {
+  q1.classList.add("hidden");
+  q2.classList.remove("hidden");
 });
 
-// Movimento aleatório do botão 'não'
-document.querySelector("#no").addEventListener("mouseover", function () {
-  let width = window.innerWidth - 50;
-  let height = window.innerHeight - 50;
-
-  this.style.position = "absolute";
-  this.style.top = Math.random() * height + "px";
-this.style.left = Math.random() * width + "px";
+// NÃO foge
+noBtn.addEventListener("mouseover", () => {
+  let x = Math.random() * 250 - 125;
+  let y = Math.random() * 250 - 125;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
 });
 
-document.querySelector("#yes").addEventListener("click", function () {
-  let question = document.getElementById("question");
-  let message = document.getElementById("answer");
-  let audio = document.getElementById("bg-music");
+// escolha do dia
+document.querySelectorAll(".date").forEach(btn => {
+  btn.addEventListener("click", () => {
+    q2.classList.add("hidden");
+    final.classList.remove("hidden");
 
-  card.style.backgroundImage =
-    "url('https://i.pinimg.com/originals/4f/88/58/4f8858d8bfa544a094fd5efca0b71985.gif')";
-  question.style.display = "none";
-  message.style.display = "flex";
-
-  audio.play();
+    audio.play();
+  });
 });
