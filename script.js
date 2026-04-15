@@ -1,30 +1,36 @@
-let noBtn = document.getElementById("no");
+document.addEventListener("DOMContentLoaded", function () {
 
-let q1 = document.getElementById("q1");
-let q2 = document.getElementById("q2");
-let final = document.getElementById("final");
+  let noBtn = document.getElementById("no");
 
-let audio = document.getElementById("bg-music");
+  let q1 = document.getElementById("q1");
+  let q2 = document.getElementById("q2");
+  let q3 = document.getElementById("q3");
 
-// SIM
-document.getElementById("yes").addEventListener("click", () => {
-  q1.classList.add("hidden");
-  q2.classList.remove("hidden");
-});
+  let audio = document.getElementById("bg-music");
 
-// NÃO foge
-noBtn.addEventListener("mouseover", () => {
-  let x = Math.random() * 250 - 125;
-  let y = Math.random() * 250 - 125;
-  noBtn.style.transform = `translate(${x}px, ${y}px)`;
-});
+  function trocarTela(atual, proxima) {
+    atual.style.display = "none";
+    proxima.style.display = "block";
+  }
 
-// escolha do dia
-document.querySelectorAll(".date").forEach(btn => {
-  btn.addEventListener("click", () => {
-    q2.classList.add("hidden");
-    final.classList.remove("hidden");
-
-    audio.play();
+  // botão SIM
+  document.getElementById("yes").addEventListener("click", function () {
+    trocarTela(q1, q2);
   });
+
+  // botão NÃO foge
+  noBtn.addEventListener("mouseover", function () {
+    let x = Math.random() * 250 - 125;
+    let y = Math.random() * 250 - 125;
+    noBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+
+  // escolha da data
+  document.querySelectorAll(".date").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      trocarTela(q2, q3);
+      audio.play();
+    });
+  });
+
 });
