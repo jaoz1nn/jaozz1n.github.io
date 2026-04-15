@@ -1,30 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite</title>
+  <link rel="stylesheet" href="style.css">
+</head>
 
-    <link rel="stylesheet" href="style.css" />
-    <title>Sim ou Não</title>
-  </head>
-  <body>
-    <div class="card" id="card">
-      <div class="question" id="question">
-        <p>Quer sair comigo?</p>
-        <div class="buttons">
-          <button id="yes" class="btn-yes">Sim!</button>
-          <button id="no" class="btn-no">Não</button>
-        </div>
-      </div>
+<body>
 
-      <div class="answer" id="answer">
-        <p>Agenda marcada.<br>Te encontro às 17h <br> dia 03/05 <br> <span class="blink">😉</span> </p>
-      </div>
+<div class="card">
+
+  <!-- TELA 1 -->
+  <div class="screen active" id="q1">
+    <h1>Letícia, quer sair comigo? ✨</h1>
+    <div class="buttons">
+      <button class="btn yes" id="yes">Sim</button>
+      <button class="btn no" id="no">Não</button>
     </div>
-    <script src="script.js"></script>
-  </body>
+  </div>
 
+  <!-- TELA 2 -->
+  <div class="screen hidden" id="q2">
+    <h2>Escolha um dia</h2>
+    <p class="subtitle">Qual dia você está livre e prefere Letícia?</p>
 
-  <audio id="bg-music" src="earned-it.mp3"></audio>
+    <div class="dates">
+      <button class="date">18</button>
+      <button class="date">19</button>
+      <button class="date">20</button>
+      <button class="date">21</button>
+    </div>
+  </div>
 
+  <!-- TELA FINAL -->
+  <div class="screen hidden" id="final">
+    <h2 class="pulse">Reserva confirmada ✨</h2>
+    <p>
+      Perfeito, Letícia! <br>
+      Agora só me manda uma foto do dia escolhido.
+    </p>
+  </div>
+
+</div>
+
+<audio id="bg-music" src="earned-it.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
 </html>
