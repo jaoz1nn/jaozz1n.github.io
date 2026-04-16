@@ -11,10 +11,10 @@ body {
 
 .card {
   background: #222;
-  padding: 40px;
+  padding: 30px;
   border-radius: 20px;
   text-align: center;
-  width: 300px;
+  width: 320px;
 }
 
 button {
