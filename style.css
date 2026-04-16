@@ -4,108 +4,43 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background: radial-gradient(circle at top, #1c1c1e, #000);
+  font-family: Arial, sans-serif;
+  background: #111;
   color: white;
 }
 
 .card {
-  width: 380px;
-  padding: 42px;
-  border-radius: 28px;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(20px);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.7);
+  background: #222;
+  padding: 40px;
+  border-radius: 20px;
   text-align: center;
-  animation: fadeIn 0.8s ease;
+  width: 300px;
 }
 
-.screen {
-  display: none;
-}
-
-.screen.active {
-  display: block;
-}
-
-.hidden {
-  display: none !important;
-}
-
-h1, h2 {
-  font-weight: 500;
-}
-
-.subtitle {
-  opacity: 0.7;
-  font-size: 14px;
-}
-
-.buttons {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-}
-
-.btn {
-  padding: 12px 22px;
-  border-radius: 14px;
+button {
+  margin: 10px;
+  padding: 10px 20px;
   border: none;
-  font-size: 16px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: 0.2s;
+  font-size: 16px;
 }
 
-.yes {
-  background: white;
-  color: black;
-}
-
-.no {
-  background: transparent;
+#yes {
+  background: #4CAF50;
   color: white;
-  border: 1px solid rgba(255,255,255,0.3);
 }
 
-.btn:hover {
-  transform: scale(1.05);
-}
-
-.dates {
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+#no {
+  background: #f44336;
+  color: white;
 }
 
 .date {
-  padding: 12px;
-  border-radius: 14px;
-  border: none;
-  background: rgba(255,255,255,0.1);
+  background: #555;
   color: white;
-  cursor: pointer;
-  transition: 0.2s;
 }
 
-.date:hover {
-  background: white;
-  color: black;
-  transform: scale(1.05);
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-.pulse {
-  animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+button:hover {
+  opacity: 0.8;
 }
