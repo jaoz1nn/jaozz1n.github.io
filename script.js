@@ -1,54 +1,83 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-  let yes = document.getElementById("yes");
-  let no = document.getElementById("no");
+let numero = "5511993849344";
 
-  let q1 = document.getElementById("q1");
-  let q2 = document.getElementById("q2");
-  let q3 = document.getElementById("q3");
+let diaEscolhido = "";
+let tipo = "";
+let filme = "";
 
-  let finalText = document.getElementById("final-text");
-  let whatsappLink = document.getElementById("whatsapp-link");
+// telas
+let q1 = document.getElementById("q1");
+let q2 = document.getElementById("q2");
+let q3 = document.getElementById("q3");
+let q4 = document.getElementById("q4");
+let q5 = document.getElementById("q5");
 
-  let audio = document.getElementById("bg-music");
+function ir(atual, prox){
+  atual.style.display = "none";
+  prox.style.display = "block";
+}
 
-  // SEU NÚMERO CORRETO
-  let numero = "5511993849344";
+// SIM
+document.getElementById("yes").onclick = () => ir(q1, q2);
 
-  // botão SIM
-  yes.addEventListener("click", function () {
-    q1.style.display = "none";
-    q2.style.display = "block";
-  });
+// NÃO foge
+document.getElementById("no").onmouseover = function(){
+  this.style.transform = `translate(${Math.random()*200-100}px, ${Math.random()*200-100}px)`
+}
 
-  // botão NÃO foge
-  no.addEventListener("mouseover", function () {
-    let x = Math.random() * 200 - 100;
-    let y = Math.random() * 200 - 100;
-    no.style.transform = `translate(${x}px, ${y}px)`;
-  });
+// ESCOLHA TIPO
+document.getElementById("combo").onclick = () => {
+  tipo = "Cinema + Restaurante";
+  ir(q2, q3);
+};
 
-  // escolha da data
-  document.querySelectorAll(".date").forEach(function (btn) {
-    btn.addEventListener("click", function () {
+document.getElementById("resto").onclick = () => {
+  tipo = "Só Restaurante";
+  ir(q2, q3);
+};
 
-      let dia = this.innerText;
+// DATA
+document.querySelectorAll(".date").forEach(btn=>{
+  btn.onclick = function(){
+    diaEscolhido = this.innerText;
 
-      q2.style.display = "none";
-      q3.style.display = "block";
+    if(tipo === "Cinema + Restaurante"){
+      ir(q3, q4);
+    } else {
+      finalizar();
+    }
+  }
+});
 
-      finalText.innerHTML =
-        `Então fechado 😄<br>
-         Dia ${dia} combinado.<br>
-         Me chama no Whats pra gente alinhar tudo 😉`;
+// FILME
+document.querySelectorAll(".movie").forEach(el=>{
+  el.onclick = function(){
+    filme = this.dataset.filme;
+    finalizar();
+  }
+});
 
-      let mensagem = `Oi! Escolhi o dia ${dia} 😄`;
-      let link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+// FINAL
+function finalizar(){
+  q3.style.display = "none";
+  q4.style.display = "none";
+  q5.style.display = "block";
 
-      whatsappLink.href = link;
+  let texto = `Então fechado 😄<br>
+  Dia ${diaEscolhido}<br>
+  ${tipo}`;
 
-      audio.play();
-    });
-  });
+  if(filme){
+    texto += `<br>Filme: ${filme}`;
+  }
+
+  document.getElementById("final-text").innerHTML = texto;
+
+  let msg = `Oi! Escolhi o dia ${diaEscolhido} - ${tipo} ${filme ? "e filme "+filme : ""} 😄`;
+
+  document.getElementById("whatsapp-link").href =
+    `https://wa.me/${numero}?text=${encodeURIComponent(msg)}`;
+}
 
 });
