@@ -7,7 +7,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let q2 = document.getElementById("q2");
   let q3 = document.getElementById("q3");
 
+  let finalText = document.getElementById("final-text");
+  let whatsappLink = document.getElementById("whatsapp-link");
+
   let audio = document.getElementById("bg-music");
+
+  // SEU NÚMERO CORRETO
+  let numero = "5511993849344";
 
   // botão SIM
   yes.addEventListener("click", function () {
@@ -25,8 +31,21 @@ document.addEventListener("DOMContentLoaded", function () {
   // escolha da data
   document.querySelectorAll(".date").forEach(function (btn) {
     btn.addEventListener("click", function () {
+
+      let dia = this.innerText;
+
       q2.style.display = "none";
       q3.style.display = "block";
+
+      finalText.innerHTML =
+        `Então fechado 😄<br>
+         Dia ${dia} combinado.<br>
+         Me chama no Whats pra gente alinhar tudo 😉`;
+
+      let mensagem = `Oi! Escolhi o dia ${dia} 😄`;
+      let link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+      whatsappLink.href = link;
 
       audio.play();
     });
